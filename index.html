@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecionamento</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Redirecionamento</h1>
+        <p>Você será redirecionado em <span id="timer">5</span> segundos.</p>
+        <p>Se não quiser esperar, clique <a id="manual-link" href="#">aqui</a>.</p>
+    </div>
+    <script>
+        // Endereço de redirecionamento
+        const redirectUrl = "https://segundo-endereco.com";
+
+        // Elementos do DOM
+        const timerElement = document.getElementById('timer');
+        const manualLink = document.getElementById('manual-link');
+
+        // Definindo o link de redirecionamento manual
+        manualLink.href = redirectUrl;
+
+        // Temporizador
+        let countdown = 5;
+        const interval = setInterval(() => {
+            countdown--;
+            timerElement.textContent = countdown;
+            if (countdown <= 0) {
+                clearInterval(interval);
+                window.location.href = redirectUrl;
+            }
+        }, 1000);
+    </script>
+</body>
+</html>
